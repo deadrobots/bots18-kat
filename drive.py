@@ -5,6 +5,8 @@ import constants as c
 import utils as u
 import math
 
+
+
 #Wheel Values
 diam = 2.6875
 circum = diam * math.pi
@@ -32,7 +34,7 @@ def driveTimed(lspeed, rspeed, time):
 
 
 def driveDistance(lspeed, rspeed, distance):
-    print 'Driving', distance, 'inches'
+    print 'Driving',distance,'inches'
     clear_motor_position_counter(c.LMOTOR)
     ticks = distance * ticksPerInch
     if (ticks > 0):
@@ -73,7 +75,7 @@ def arc(degree):
 
 
 def rotate(degree):
-    print 'Rotating', degree, 'degrees'
+    print 'Rotating',degree,'degrees'
     time = degree * 8
     if time < 0:
         time = time * -1
@@ -93,6 +95,7 @@ def rotate(degree):
 
 
 def lineFollowUntilCan():
+    clear_motor_position_counter(c.LMOTOR)
     while analog(c.ET) < c.seeCan:
         if u.onBlack():
             drive(80, 60)
@@ -116,13 +119,31 @@ def lineFollowDistance(inches):
     driveTimed(0, 0, 500)
 
 
-def timedLineFollow(sec):
+def smoothTimedLineFollow(sec, speed):
     stopTime = seconds() + sec
     while seconds() < stopTime:
         if u.onBlack():
-            drive(80, 70)
+            drive(speed, speed - 10)
             msleep(10)
         else:
-            drive(70, 80)
+            drive(speed - 10, speed)
             msleep(10)
     driveTimed(0, 0, 500)
+
+
+def timedLineFollow(sec, speed):
+    stopTime = seconds() + sec
+    if speed < 30:
+        speed = 30
+    else:
+        pass
+    while seconds() < stopTime:
+        if u.onBlack():
+            drive(speed, speed - 30)
+            msleep(10)
+        else:
+            drive(speed - 30, speed)
+            msleep(10)
+    driveTimed(0, 0, 500)
+
+

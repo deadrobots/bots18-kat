@@ -11,7 +11,8 @@ import constants as c
 def main():
     print("Hello Kat")
     a.init()
-    d.timedLineFollow(5)
+    a.findCanDeliverHome()
+
 
 
 
@@ -21,5 +22,6 @@ if __name__ == "__main__":
 
 
 
-#Need to check that the rotate print statement works
-#Need to check that the drive distance function works with different speeds and in negative direction
+#need to configure camera
+#need to work on a proportion line follow
+#next task: pom chase

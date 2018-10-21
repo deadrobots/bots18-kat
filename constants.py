@@ -32,5 +32,5 @@ clawOpen90 = 1650
 grabCan = 1100
 clawClosed = 900
 
-black = 2000
+black = 1500
 seeCan = 1900

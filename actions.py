@@ -5,6 +5,8 @@ import drive as d
 import utils as u
 import constants as c
 
+
+
 def init():
     enable_servo(0)
     enable_servo(1)
@@ -24,6 +26,7 @@ def driveSquare(size):
         d.rotate(90)
         msleep(200)
 
+
 def grabCan():
     u.moveServo(c.servoClaw, c.clawOpen, 20)
     msleep(200)
@@ -36,12 +39,13 @@ def grabCan():
     u.moveServo(c.servoArm, 1200, 10)
 
 
-def lineFollowUntilCan():
+def lFUntilCan():
     #line follows until can, grabs can, rotates 90, then drops can
     print("looking for can")
     u.moveServo(c.servoArm, c.armCan, 20)
     u.moveServo(c.servoClaw, c.clawOpen90 - 100, 20)
     d.lineFollowUntilCan()
+    print("saw can")
     u.moveServo(c.servoClaw, c.grabCan, 5)
     msleep(200)
     u.moveServo(c.servoArm, 1200, 10)
@@ -49,4 +53,22 @@ def lineFollowUntilCan():
     d.rotate(-90)
     u.moveServo(c.servoArm, c.armCan, 20)
     u.moveServo(c.servoClaw, c.clawOpen90, 20)
+
+
+def findCanDeliverHome():
+    print("looking for can")
+    u.moveServo(c.servoArm, c.armCan, 20)
+    u.moveServo(c.servoClaw, c.clawOpen90 - 100, 20)
+    startTime = seconds()
+    d.lineFollowUntilCan()
+    totalTime = seconds() - startTime
+    u.moveServo(c.servoClaw, c.grabCan, 5)
+    msleep(200)
+    u.moveServo(c.servoArm, 1200, 10)
+    msleep(200)
+    d.rotate(190)
+    u.waitForButton()
+    d.smoothTimedLineFollow(totalTime)
+
+
 

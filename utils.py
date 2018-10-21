@@ -7,23 +7,23 @@ import constants as c
 
 
 def waitForButton():
-    print ("waiting for right button")
+    print("waiting for right button")
     while right_button() == 0:
-        msleep(1)
-    print ("right button pressed")
+        pass
+    print("right button pressed")
     msleep(500)
 
 
 def moveServo(servo, position, speed):
     i = get_servo_position(servo)
-    if (position > i):
-        while (i < position):
+    if position > i:
+        while i < position:
             set_servo_position(servo, i)
             i += speed
             msleep(10)
         set_servo_position(servo, position)
     else:
-        while (i > position):
+        while i > position:
             set_servo_position(servo, i)
             i -= speed
             msleep(10)
