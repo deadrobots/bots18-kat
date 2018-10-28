@@ -13,7 +13,7 @@ def waitForButton():
     print("right button pressed")
     msleep(500)
 
-
+# This is excellent code. Well done! I am impressed -LMB
 def moveServo(servo, position, speed):
     i = get_servo_position(servo)
     if position > i:
@@ -30,7 +30,7 @@ def moveServo(servo, position, speed):
         set_servo_position(servo, position)
 
 
-def onBlack():
+def onBlack(): # There is a way to shorten this function to one line, without using an if() statement. Can you think of how to do that? -LMB
     if analog(c.topHat) > c.black:
         return True
     else:
