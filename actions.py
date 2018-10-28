@@ -4,10 +4,17 @@ from wallaby import *
 import drive as d
 import utils as u
 import constants as c
-
+import camera as x
 
 
 def init():
+    print("opening camera")
+    camera_open_black()
+    msleep(3000)
+    print("opened camera")
+    camera_update()
+    print("updated camera")
+    msleep(2000)
     enable_servo(0)
     enable_servo(1)
 
@@ -69,6 +76,7 @@ def findCanDeliverHome():
     d.rotate(190)
     u.waitForButton()
     d.smoothTimedLineFollow(totalTime)
+
 
 
 

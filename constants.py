@@ -19,6 +19,12 @@ LMOTOR = 3
 servoArm = 0
 servoClaw = 1
 
+#Camera Channels:
+RED = 0
+GREEN = 1
+BLUE = 2
+ORANGE = 3
+
 #Servo Positions:
 #Arm
 armUp = 2047

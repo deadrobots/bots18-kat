@@ -32,12 +32,12 @@ def driveTimed(lspeed, rspeed, time):
     motor(c.RMOTOR, 0)
     msleep(10)
 
-# I also like this code. I am curious to see how straight it can drive. -LMB
+
 def driveDistance(lspeed, rspeed, distance):
     print 'Driving',distance,'inches'
     clear_motor_position_counter(c.LMOTOR)
     ticks = distance * ticksPerInch
-    if (ticks > 0): # Parentheses here are not required (my apologies. I messed up on the documentation paper I gave you) -LMB
+    if ticks > 0:
         motor(c.LMOTOR, lspeed)
         motor(c.RMOTOR, rspeed)
         while (get_motor_position_counter(c.LMOTOR) < ticks):
@@ -94,8 +94,8 @@ def rotate(degree):
     msleep(10)
 
 
-def lineFollowUntilCan(): # Does this work along that first large turn on the mat? The drive turn values don't
-    clear_motor_position_counter(c.LMOTOR) # appear to be spaced widely enough from each other. -LMB
+def lineFollowUntilCan():
+    clear_motor_position_counter(c.LMOTOR)
     while analog(c.ET) < c.seeCan:
         if u.onBlack():
             drive(80, 60)

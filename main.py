@@ -5,14 +5,14 @@ import actions as a
 import drive as d
 import utils as u
 import constants as c
+import camera as x
 
-# Your code is very well done, Kat. Take a look at the comments I made,
-# and don't forget to add comments of your own, around the more complicated code. -LMB
+
 
 def main():
     print("Hello Kat")
     a.init()
-    a.findCanDeliverHome()
+    x.spinUntilColorPositive(c.RED)
 
 
 
@@ -23,6 +23,7 @@ if __name__ == "__main__":
 
 
 
-#need to configure camera
+#configured camera
+#need to work on camera functions
 #need to work on a proportion line follow
 #next task: pom chase
