@@ -4,7 +4,6 @@ from wallaby import *
 import drive as d
 import utils as u
 import constants as c
-import camera as x
 
 
 def init():

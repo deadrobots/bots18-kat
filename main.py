@@ -5,15 +5,12 @@ import actions as a
 import drive as d
 import utils as u
 import constants as c
-import camera as x
 
 
 
 def main():
     print("Hello Kat")
     a.init()
-    x.driveToColor(c.REDCAN)
-
 
 
 
