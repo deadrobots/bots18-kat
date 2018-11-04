@@ -7,7 +7,7 @@ import utils as u
 
 
 
-cameraWidth = 160
+cameraWidth = 160 # These seems like constants to me. Perhaps they should be in constants.py... -LMB
 cameraHeight = 120
 
 
@@ -26,7 +26,9 @@ def spinUntilColorPositive(color):
         msleep(100)
         d.rotate(1)
 
-
+# These look like great functions to test your camera with.
+# Can you make another function that drives your robot closer to any color
+# that it sees? -LMB
 def spinUntilColorNegative(color):
     camera_update()
     msleep(2000)

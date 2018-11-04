@@ -15,7 +15,7 @@ def init():
     camera_update()
     print("updated camera")
     msleep(2000)
-    enable_servo(0)
+    enable_servo(0) # Constants, please! -LMB
     enable_servo(1)
 
 
