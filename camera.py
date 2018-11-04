@@ -45,16 +45,13 @@ def driveToColor(color):
         d.rotate(1)
     print("saw object")
     msleep(500)
-    while (not (get_object_center_x(color, 0) < 15)) or (not (get_object_center_x(color, 0) > 5)):
+    while (get_object_center_x(color, 0) > 15) or (get_object_center_x(color, 0) < 5):
+        print(get_object_center_x(color, 0))
+        camera_update()
+        msleep(100)
         if get_object_center_x(color, 0) < 5:
-            print(get_object_center_x(color, 0))
-            camera_update()
-            msleep(100)
             d.rotate(-1)
         elif get_object_center_x(color, 0) > 15:
-            print(get_object_center_x(color, 0))
-            camera_update()
-            msleep(100)
             d.rotate(1)
     print("Centered can")
     print(get_object_center_x(color, 0))
