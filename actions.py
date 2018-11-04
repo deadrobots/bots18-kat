@@ -15,8 +15,10 @@ def init():
     camera_update()
     print("updated camera")
     msleep(2000)
-    enable_servo(0) # Constants, please! -LMB
-    enable_servo(1)
+    enable_servo(c.servoArm)
+    enable_servo(c.servoClaw)
+    u.moveServo(c.servoClaw, c.clawOpen90, 10)
+    u.moveServo(c.servoArm, c.armLevel, 10)
 
 
 def driveSquare(size):

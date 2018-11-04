@@ -12,7 +12,7 @@ import camera as x
 def main():
     print("Hello Kat")
     a.init()
-    x.spinUntilColorPositive(c.RED)
+    x.driveToColor(c.REDCAN)
 
 
 

@@ -7,10 +7,6 @@ import utils as u
 
 
 
-cameraWidth = 160 # These seems like constants to me. Perhaps they should be in constants.py... -LMB
-cameraHeight = 120
-
-
 def spinUntilColorPositive(color):
     camera_update()
     msleep(2000)
@@ -26,9 +22,7 @@ def spinUntilColorPositive(color):
         msleep(100)
         d.rotate(1)
 
-# These look like great functions to test your camera with.
-# Can you make another function that drives your robot closer to any color
-# that it sees? -LMB
+
 def spinUntilColorNegative(color):
     camera_update()
     msleep(2000)
@@ -39,3 +33,33 @@ def spinUntilColorNegative(color):
     print("saw object")
     msleep(500)
     print(get_object_center_x(color, 0))
+
+
+def driveToColor(color):
+    print("Running drive to color function")
+    camera_update()
+    msleep(2000)
+    while get_object_count(color) == 0:
+        camera_update()
+        msleep(100)
+        d.rotate(1)
+    print("saw object")
+    msleep(500)
+    while (not (get_object_center_x(color, 0) < 15)) or (not (get_object_center_x(color, 0) > 5)):
+        if get_object_center_x(color, 0) < 5:
+            print(get_object_center_x(color, 0))
+            camera_update()
+            msleep(100)
+            d.rotate(-1)
+        elif get_object_center_x(color, 0) > 15:
+            print(get_object_center_x(color, 0))
+            camera_update()
+            msleep(100)
+            d.rotate(1)
+    print("Centered can")
+    print(get_object_center_x(color, 0))
+    msleep(500)
+    while get_object_center_y(color, 0) < 60:
+        print(get_object_center_y(color, 0))
+        d.driveTimed(10, 10, 20)
+    print("Got close to can")

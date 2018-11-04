@@ -4,10 +4,22 @@ from wallaby import *
 
 
 
+#Camera:
+
+cameraWidth = 160
+cameraHeight = 120
+
+#Camera Channels:
+REDCAN = 0
+GREEN = 1
+BLUE = 2
+ORANGE = 3
+
 #Analog Ports:
 
 topHat = 0
 ET = 5
+
 
 #Motor Ports:
 
@@ -19,11 +31,6 @@ LMOTOR = 3
 servoArm = 0
 servoClaw = 1
 
-#Camera Channels:
-RED = 0
-GREEN = 1
-BLUE = 2
-ORANGE = 3
 
 #Servo Positions:
 #Arm
