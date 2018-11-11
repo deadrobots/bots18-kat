@@ -45,6 +45,11 @@ def driveToColor(color):
         d.rotate(1)
     print("saw object")
     msleep(500)
+	# Note that the "center" of your x/y camera view is actually around 80.
+	# The furthest-left value is 0, the furthest right value is around 160
+	# As it is written, I would expect your code to attempt to keep the can in the
+	# "corner" of your robot's vision, as it moves towards it. 5 and 15 are not
+	# good values for "centering" the can -LMB
     while (get_object_center_x(color, 0) > 15) or (get_object_center_x(color, 0) < 5):
         print(get_object_center_x(color, 0))
         camera_update()
