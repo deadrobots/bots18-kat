@@ -4,6 +4,7 @@ from wallaby import *
 import drive as d
 import utils as u
 import constants as c
+import random
 
 
 def init():
@@ -78,6 +79,47 @@ def findCanDeliverHome():
     u.waitForButton()
     d.smoothTimedLineFollow(totalTime)
 
+
+def gyroTest(sec):
+    stopTime = seconds() + sec
+    print("Shake me!")
+    while seconds() < stopTime:
+        if gyro_x() > 200:
+            print("I've bumped into something!")
+        else:
+            pass
+
+
+def bumpyDrive():
+    print("Bumpy drive!")
+    while right_button() != 1:
+        d.driveTimed(70, 70, 10)
+        if gyro_x() > 200:
+            print("I've bumped into something!")
+            msleep(500)
+            rotation = random.randint(-180, 180)
+            print("Rotating ", rotation, " degrees")
+            if (rotation > 80) or (rotation < -80):
+                d.rotateSpeed(rotation, 50)
+            else:
+                print("Degree too small")
+                rotation = random.randint(80, 280)
+                print("Rotating ", rotation, " degrees")
+                d.rotateSpeed(rotation, 50)
+        else:
+            pass
+
+
+def test():
+    while right_button() != 1:
+        print("press right button!")
+        print(random.randint(-100, 100))
+        msleep(500)
+    msleep(500)
+    print("right button pressed")
+
+
+def driveStraight():
 
 
 

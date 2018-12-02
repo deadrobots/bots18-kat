@@ -10,6 +10,8 @@ import math
 #Wheel Values
 diam = 2.6875
 circum = diam * math.pi
+#dist =
+rot = 3815 #number of ticks to rotate 360
 
 
 #Tick Values
@@ -76,6 +78,7 @@ def arc(degree):
 
 def rotate(degree):
     print 'Rotating',degree,'degrees'
+    clear_motor_position_counter(c.LMOTOR)
     time = degree * 8
     if time < 0:
         time = time * -1
@@ -87,6 +90,27 @@ def rotate(degree):
         motor(c.LMOTOR, -84)# for the other drive functions -LMB
         motor(c.RMOTOR, 79)
         msleep(time)
+    elif degree is 0:
+        pass
+    motor(c.LMOTOR, 0)
+    motor(c.RMOTOR, 0)
+    msleep(10)
+    print(get_motor_position_counter(c.LMOTOR))
+
+
+def rotateSpeed(degree, speed):
+    print 'Rotating', degree, 'degrees'
+    clear_motor_position_counter(c.LMOTOR)
+    clear_motor_position_counter(c.RMOTOR)
+    ticks = (rot * degree) / 395
+    if ticks < 0:
+        ticks = ticks * -1
+    if degree < 0:
+        while (get_motor_position_counter(c.LMOTOR) < ticks):
+            driveTimed(speed, -int(speed * 0.94), 10)
+    elif degree > 0:
+        while (get_motor_position_counter(c.RMOTOR) < ticks):
+            driveTimed(-(speed), int(speed * 0.94), 10)
     elif degree is 0:
         pass
     motor(c.LMOTOR, 0)

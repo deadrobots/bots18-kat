@@ -10,7 +10,8 @@ import constants as c
 
 def main():
     print("Hello Kat")
-    a.init()
+    #a.init
+
 
 
 
@@ -23,6 +24,6 @@ if __name__ == "__main__":
 #configured camera
 #need to work on camera functions
 #need to work on a proportion line follow
-#next task: pom chase
-#next task: bumpy
+#next task: pom chase(?)
 #next task: drive straight
+#working on: driving straight using gyro z
