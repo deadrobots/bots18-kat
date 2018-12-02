@@ -24,3 +24,5 @@ if __name__ == "__main__":
 #need to work on camera functions
 #need to work on a proportion line follow
 #next task: pom chase
+#next task: bumpy
+#next task: drive straight
