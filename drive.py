@@ -97,7 +97,10 @@ def rotate(degree):
     msleep(10)
     print(get_motor_position_counter(c.LMOTOR))
 
-
+# Great job using motor ticks to precisely turn.
+# I suggest not using any timed-drive functions, as that will decrease the accuracy of
+# your turn. You don't need to pay attention to time if you are looking at motor ticks
+# to tell you how far you have turned. -LMB
 def rotateSpeed(degree, speed):
     print 'Rotating', degree, 'degrees'
     clear_motor_position_counter(c.LMOTOR)
@@ -105,7 +108,8 @@ def rotateSpeed(degree, speed):
     ticks = (rot * degree) / 395
     if ticks < 0:
         ticks = ticks * -1
-    if degree < 0:
+    if degree < 0:	# You can turn this into one single while loop, for increased code 
+					# readability and maintainability. -LMB
         while (get_motor_position_counter(c.LMOTOR) < ticks):
             driveTimed(speed, -int(speed * 0.94), 10)
     elif degree > 0:
@@ -115,7 +119,10 @@ def rotateSpeed(degree, speed):
         pass
     motor(c.LMOTOR, 0)
     motor(c.RMOTOR, 0)
-    msleep(10)
+    msleep(10) 	# this function does not need a final msleep() command. The code that calls this 
+				# function might, but it also might hinder your robot if it was called frequently
+				# from within a loop. This might sound nit-picky for just 10 milliseconds, but
+				# it can add up  -LMB
 
 
 def lineFollowUntilCan():
